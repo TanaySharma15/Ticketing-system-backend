@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
-const jwtPassword = "pass123"; // Same password used for signing the token
+const jwtPassword = "pass123"; 
 
 const authenticateToken = (req, res, next) => {
-    const token = req.headers['authorization'] // Expecting "Bearer <token>"
+    const token = req.headers['authorization'] 
     // console.log(token)
     if (!token) {
         return res.status(403).json({ msg: "Access denied, no token provided." });

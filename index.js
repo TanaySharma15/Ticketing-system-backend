@@ -34,15 +34,10 @@ connectDB(); // Call the function to connect to MongoDB
 app.use('/api/auth', authRoutes); // Adjust the path as needed
 app.use('/api/ticket',ticketRoutes)
 
-// app.listen(PORT, () => {
-//     console.log(`Server is running on port ${PORT}`);
-// });
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
 
-if (require.main === module) {
-    const PORT = process.env.PORT || 3000;
-    app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
-    });
-}
+
 
 module.exports = app;

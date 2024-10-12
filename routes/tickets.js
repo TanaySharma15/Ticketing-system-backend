@@ -5,12 +5,12 @@ const {
     getTicketById,
     updateTicket,
     deleteTicket
-} = require('../controller/ticketController'); // Create this controller
+} = require('../controller/ticketController'); 
 const authenticateToken = require('../middleware/authenticateToken');
 
 const router = express.Router();
 
-// Protected routes for creating, updating, and deleting tickets
+
 router.post('/', createTicket);
 router.get('/',authenticateToken, getAllTickets);
 router.get('/:id', getTicketById);

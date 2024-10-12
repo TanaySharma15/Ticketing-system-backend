@@ -20,8 +20,7 @@ const   createTicket = async(req,res)=>{
     if(!result.success){
         return res.status(400).json({
             msg:"Error occured while creating ticket",
-            errors: result.error.flatten().fieldErrors // Send more error details
-
+            errors: result.error.flatten().fieldErrors 
         })
     }
     const {passengerName,trainNumber,source,destination,date} = result.data;
@@ -35,7 +34,7 @@ const   createTicket = async(req,res)=>{
     })
 }
 catch(error){
-    console.error("Ticket creation error: ", error); // Log the error
+    console.error("Ticket creation error: ", error); 
     return res.status(403).json({
         msg:"Some error occured"
     })
@@ -46,8 +45,8 @@ catch(error){
 
 const getTickets = async(req,res)=>{
     try {
-        const ticket = await Ticket.find() //fetch all tickets from db
-        return res.status(200).json(ticket); // Return tickets as a JSON response
+        const ticket = await Ticket.find() 
+        return res.status(200).json(ticket);
 
     } catch (error) {
     return res.status(500).json({
@@ -60,13 +59,7 @@ const getTickets = async(req,res)=>{
 
 const getAllTickets = async (req,res)=>{
 try{
-// const token = req.headers.Authorization
-// const decoded = jwt.verify(token,jwtPassword)
-// if(!decoded){
-//     return res.status(404).json({
-//         msg:"token invalid"
-//     })
-// }
+
 await getTickets(req,res)
 }
 
@@ -129,11 +122,7 @@ const updateTicket= async (req,res)=>{
             destination: req.body.destination
         }
     },{
-        new: true  //If set to true, returns the modified document rather than the original. Defaults to false.
-    },{
-        upsert:false  //If true, creates the document if it doesn’t exist. Defaults to false.
-    },{
-        runValidators:false  //If true, runs schema validation during the update. Defaults to false
+        new: true  
     }
 )
 if(!updatedTicket){
